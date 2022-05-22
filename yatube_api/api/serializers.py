@@ -23,12 +23,11 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
 
         def validate_text(self, data):
-            if '' in data.lower():
+            if not data:
                 raise serializers.ValidationError(
                     'Коментарий не должен быть пустым'
                 )
-            else:
-                return data
+            return data
 
 
 class GroupSerializer(serializers.ModelSerializer):

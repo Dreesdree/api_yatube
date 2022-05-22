@@ -6,9 +6,9 @@ from api.permissions import AuthorOrReading
 
 
 class PostViewSet(viewsets.ModelViewSet):
-    permission_classes = [
+    permission_classes = (
         permissions.IsAuthenticated,
-        AuthorOrReading]
+        AuthorOrReading)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -22,9 +22,9 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class CommentViewSet(viewsets.ModelViewSet):
-    permission_classes = [
+    permission_classes = (
         permissions.IsAuthenticated,
-        AuthorOrReading]
+        AuthorOrReading)
     serializer_class = CommentSerializer
 
     def perform_create(self, serializer):
